@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <style>
+        html {
+            font-family: Poppins, sans-serif;
+            color: #333;
+            background: #FFF;
+            line-height: 1.5;
+            font-size: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            margin: 0; 
+            padding: 0;
+        }
+
+        header, footer {
+            background: lightblue;
+            padding: 1rem;
+        }
+
+        main {
+            max-width: 500px;
+            margin: 2rem auto;
+            padding: 1rem;
+        }
+
+        h1 {
+            font-size: 1.2rem;
+        }
+
+        a {
+            color: #333;
+        }
+
+        .reponses {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        .reponses li {
+            width: 85%;
+            background: lightblue;
+            border: 2px solid rgb(111, 169, 189);
+            border-radius: 1rem;
+            padding: 1rem;
+            margin: auto;
+            margin-top: 1rem;
+        }
+        .reponses a {
+            color: #333;
+            text-decoration: none;
+            display: block;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header><a href="/">Énigmes dans les gorges du Taubenloch</a></header>
+    <main>
+        <h1>{{ title }}</h1>
+        {{ content | safe }}
+
+        <img src="{{image}}" alt="{{title}}">
+
+        {{ question }}
+
+        <ul class="reponses">
+        {% for r in reponses %}
+            <li>{% if r.statut != false %}<a href="{{r.statut}}">{{ r.reponse }}</a>{% else %}{{ r.reponse }}{% endif %}</li>
+        {% endfor %}
+        </ul>
+
+    </main>
+    <footer>
+        <p>Un test pour le 18 novembre 2021 ;)</p>
+    </footer>
+</body>
+
+</html>
